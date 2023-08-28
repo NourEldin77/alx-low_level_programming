@@ -5,19 +5,19 @@
  */
 int main(void)
 {
-	long long int i = 0, num1 = 0, num2 = 1;
-	long long int fibonacci;
+	unsigned long int i = 0, num1 = 0, num2 = 1;
+	unsigned long int fibonacci;
 
 	while (i < 50)
 	{
 		fibonacci = num1 + num2;
 		if (fibonacci != 1)
 		{
-			printf(", %lld", fibonacci);
+			printf(", %lu", fibonacci);
 		}
 		else
 		{
-			printf("%lld", fibonacci);
+			printf("%lu", fibonacci);
 		}
 		num1 = num2;
 		num2 = fibonacci;
