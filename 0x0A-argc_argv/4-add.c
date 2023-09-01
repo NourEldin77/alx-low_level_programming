@@ -7,21 +7,24 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, num, total = 0;
+	int i, num, total = 0, y;
 
 	if (argc >= 1)
 	{
 		for (i = 1; i < argc; i++)
-		{
-			num = atoi(argv[i]);
-			if (num)
+		{	
+			for (y = 0; argv[i][y] != '\0'; y++)
 			{
-				total += num;
-			}
-			else
-			{
-				printf("Error\n");
-				return (1);
+				num = atoi(argv[i][y]);
+				if (num)
+				{
+					total += argv[i];
+				}
+				else
+				{
+					printf("Error\n");
+					return (1);
+				}
 			}
 		}
 		printf("%d\n", total);
@@ -30,4 +33,5 @@ int main(int argc, char *argv[])
 	{
 		printf("0\n");
 	}
+	return (0);
 }
