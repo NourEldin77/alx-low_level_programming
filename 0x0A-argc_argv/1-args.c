@@ -1,13 +1,13 @@
-#include "main.h"
+#include <stdio.h>
 /**
- * main - prints the exe file name
+ * main - prints the argc
  * @argc: argument counter
  * @argv: argument vector
  * Return: Always (0) Success
  */
 int main(int argc, char *argv[])
 {
-	_putchar(argc);
-	_putchar('\n');
+	(void) argv;
+	printf("%d\n", argc - 1);
 	return (0);
 }
