@@ -9,23 +9,20 @@ int main(int argc, char *argv[])
 {
 	int i, num, total = 0, y;
 
-	if (argc >= 1)
+	if (argc > 1)
 	{
 		for (i = 1; i < argc; i++)
-		{	
+		{
 			for (y = 0; argv[i][y] != '\0'; y++)
 			{
-				num = atoi(argv[i][y]);
-				if (num)
-				{
-					total += atoi(argv[i]);
-				}
-				else
+				num = isdigit(argv[i][y]);
+				if (!(num))
 				{
 					printf("Error\n");
 					return (1);
 				}
 			}
+				total += atoi(argv[i]);
 		}
 		printf("%d\n", total);
 	}
@@ -33,5 +30,7 @@ int main(int argc, char *argv[])
 	{
 		printf("0\n");
 	}
+
 	return (0);
 }
+
