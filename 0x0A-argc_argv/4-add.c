@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 				num = atoi(argv[i][y]);
 				if (num)
 				{
-					total += argv[i];
+					total += atoi(argv[i]);
 				}
 				else
 				{
