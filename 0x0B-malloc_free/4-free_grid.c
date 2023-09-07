@@ -1,4 +1,4 @@
-#include "maim.h"
+#include "main.h"
 /**
  * free_grid -  frees a 2 dimensional grid
  * @grid: int pointer
@@ -10,7 +10,7 @@ void free_grid(int **grid, int height)
 
 	for (x = 0; x < height; x++)
 	{
-		free(grid[i]);
+		free(grid[x]);
 	}
 	free(grid);
 }
