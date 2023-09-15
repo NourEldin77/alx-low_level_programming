@@ -4,42 +4,43 @@
  * @format: c or i or f or s
  * Return: void
  */
-
-void print_all(const char * const format, ...)
+void print_all(const char *const format, ...)
 {
-	va_list pa;
-	int i = 0;
-	char *c;
+	int i;
+	char *cp;
+	char c;
+	va_list ap;
 
-	va_start(pa, format);
-	while (format != NULL &&  format[i] != '\0')
+	va_start(ap, format);
+	i = 0;
+	while (format && format[i])
 	{
 		switch (format[i])
 		{
-			if (i > 0 && (format[i] == 'c' || format[i] == 'i' ||
-			      format[i] == 'f' || format[i] == 's'))
-			{
-			printf(", ");
-			}
-			case 'c':
-				printf("&c%c", (char)va_arg(pa, int));
+				case 'c':
+				c = (char) va_arg(ap, int);
+				printf("%c", c);
 				break;
 			case 'i':
-				printf("&i%d", va_arg(pa, int));
+				printf("%d", va_arg(ap, int));
 				break;
 			case 'f':
-				printf("&f%f", va_arg(pa, double));
+				printf("%f", (float) va_arg(ap, double));
 				break;
 			case 's':
-				c =  va_arg(pa, char *);
-				printf("%s", c !=  (char *)NULL ? c : "(nil)");
+				cp = va_arg(ap, char*);
+				printf("%s", cp == NULL ? "(nil)" : cp);
 				break;
 			default:
 				i++;
 				continue;
 		}
+		if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i]
+					== 's') &&
+			format[i + 1] != '\0')
+			printf(", ");
 		i++;
 	}
-	va_end(pa);
+	va_end(ap);
 	printf("\n");
 }
