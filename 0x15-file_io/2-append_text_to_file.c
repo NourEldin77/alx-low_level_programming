@@ -29,6 +29,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	int file = open(filename, O_WRONLY | O_APPEND), c;
 	size_t len = _strlen(text_content);
 	ssize_t w;
+
 	if (file == -1 || filename == NULL)
 	{
 		return (-1);
