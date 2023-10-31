@@ -1,6 +1,5 @@
 #include "main.h"
 size_t _strlen(char *s);
-
 /**
  * _strlen - get length of string
  * @s: string
@@ -26,24 +25,23 @@ size_t _strlen(char *s)
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int file = open(filename, O_WRONLY | O_APPEND), c;
-	size_t len = _strlen(text_content);
+	int file = open(filename, O_WRONLY | O_APPEND);
 	ssize_t w;
 
 	if (file == -1 || filename == NULL)
 	{
 		return (-1);
 	}
-	w = write(file, text_content, len);
+	else if (text_content != NULL)
+	{
+		w = write(file, text_content, _strlen(text_content));
 
-	if (w == -1)
-	{
-		return (-1);
+		if (w == -1)
+		{
+			close(file);
+			return (-1);
+		}
 	}
-	c = close(file);
-	if (c == -1)
-	{
-		return (-1);
-	}
+	close(file);
 	return (1);
 }
